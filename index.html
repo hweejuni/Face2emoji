@@ -32,19 +32,7 @@
         5: '😲', // surprise
         6: '😐' // neutral
       }
-      button.onclick = function() {
-        w = video.videoWidth;
-        h = video.videoHeight;
-        s = Math.min(w, h);
-        sx = (w-s)/2;
-        sy = (h-s)/2;
-
-        canvas.getContext('2d').drawImage(video, sx=sx, sy=sy, swidth=s,
-          sheight=s, x=0, y=0, width=48, height=48);
-
-        span.innerHTML = '⌛';
-        predict();
-    };
+      
       async function predict() {
         const model = await tf.loadLayersModel('./model/model.json');
 
@@ -62,7 +50,35 @@
         span.innerHTML = LABELS[i];
       }
 
-      
+      button.onclick = function() {
+        w = video.videoWidth;
+        h = video.videoHeight;
+        s = Math.min(w, h);
+        sx = (w-s)/2;
+        sy = (h-s)/2;
+
+        canvas.getContext('2d').drawImage(video, sx=sx, sy=sy, swidth=s,
+          sheight=s, x=0, y=0, width=48, height=48);
+
+        span.innerHTML = '⌛';
+        predict();
+    };
+
+	constraints = {
+	  audio: false,
+	  video: true
+	};
+
+	function handleSuccess(stream) {
+	  video.srcObject = stream;
+	}
+
+	function handleError(error) {
+	  alert('navigator.MediaDevices.getUserMedia error: ' + error.message + error.name);
+	}
+
+	navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
+
 </script>
   </body>
 </html>
