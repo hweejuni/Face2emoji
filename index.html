@@ -2,16 +2,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
-    <title>Demo</title>
+    <title>Hwijun_Face2emoji</title>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"></script>
   </head>
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"></script>
-    <video playsinline autoplay></video>
+    <video playsinline="" autoplay="" style="transform: scaleX(-1);"></video>
     <button>Capture</button>
-    <canvas></canvas>
-    <span></span>
+    <canvas width="48" height="48" style="filter: grayscale(1);"></canvas>
+    <span style="font-size: 48px;"></span>
     <script>
       video = document.querySelector('video');
       button = document.querySelector('button');
